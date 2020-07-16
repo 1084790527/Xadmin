@@ -1,0 +1,5 @@
+spring:
+  profiles:
+#  配置文件  prod 生产环境   dev 本地测试环境
+    active: dev
+

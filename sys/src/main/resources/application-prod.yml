@@ -1,0 +1,17 @@
+server:
+  servlet:
+    context-path: /sys
+  port: 8080
+
+web:
+  front:
+#    baseDir: web_html
+    baseDir: D:\IdeaProjects\Xadmin\web_html
+
+jwt:
+  config:
+    key: jsldkfuweio&*($@JHJBVDAYUIDhj
+    ttl: 3600000
+
+logging:
+  config: sys/log4j2-prod.xml

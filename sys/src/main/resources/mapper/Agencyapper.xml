@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yao.sys.dao.AgencyDao">
+    <resultMap id="BaseResultMap" type="com.yao.bean.db.AgencyPojo">
+        <id column="id" jdbcType="VARCHAR" property="id" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="mobile_no" jdbcType="VARCHAR" property="mobileNo" />
+        <result column="reg_date" jdbcType="TIMESTAMP" property="regDate" />
+        <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
+        <result column="cre_oper_id" jdbcType="VARCHAR" property="creOperId" />
+        <result column="last_mod_oper_id" jdbcType="VARCHAR" property="lastModOperId" />
+        <result column="last_mod_oper_date" jdbcType="TIMESTAMP" property="lastModOperDate" />
+        <result column="state" jdbcType="VARCHAR" property="state" />
+        <result column="city_id" jdbcType="VARCHAR" property="cityId" />
+    </resultMap>
+
+    <sql id="where">
+        <where>
+            <if test="id != null">
+                and t.id =  #{id,jdbcType=VARCHAR}
+            </if>
+            <if test="name != null">
+                and t.name like concat('%',#{name,jdbcType=VARCHAR},'%')
+            </if>
+            <if test="mobileNo != null">
+                and t.mobile_no =  #{mobileNo,jdbcType=VARCHAR}
+            </if>
+            <if test="regDate != null">
+                and t.reg_date =  #{regDate,jdbcType=TIMESTAMP}
+            </if>
+            <if test="updateDate != null">
+                and t.update_date =  #{updateDate,jdbcType=TIMESTAMP}
+            </if>
+            <if test="creOperId != null">
+                and t.cre_oper_id =  #{creOperId,jdbcType=VARCHAR}
+            </if>
+            <if test="lastModOperId != null">
+                and t.last_mod_oper_id =  #{lastModOperId,jdbcType=VARCHAR}
+            </if>
+            <if test="lastModOperDate != null">
+                and t.last_mod_oper_date =  #{lastModOperDate,jdbcType=TIMESTAMP}
+            </if>
+            <if test="state != null">
+                and t.state =  #{state,jdbcType=VARCHAR}
+            </if>
+            <if test="inState != null">
+                and t.state in( ${inState} )
+            </if>
+            <if test="cityId != null">
+                and t.city_id =  #{cityId,jdbcType=VARCHAR}
+            </if>
+            <if test="regStartDate != null">
+                and <![CDATA[ t.reg_date >= #{regStartDate,jdbcType=TIMESTAMP} ]]>
+            </if>
+            <if test="regEndDate != null">
+                and <![CDATA[ t.reg_date <= #{regEndDate,jdbcType=TIMESTAMP} ]]>
+            </if>
+        </where>
+    </sql>
+
+    <sql id="keyWhere">
+        <where>
+            and t.id =  #{id,jdbcType=VARCHAR}
+        </where>
+    </sql>
+
+    <sql id="insertColumnsVal">
+        <trim prefix="values(" suffix=")" suffixOverrides=",">
+            <if test="id != null" >
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="mobileNo != null">
+                #{mobileNo,jdbcType=VARCHAR},
+            </if>
+            <if test="regDate != null">
+                #{regDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateDate != null">
+                #{updateDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="creOperId != null">
+                #{creOperId,jdbcType=VARCHAR},
+            </if>
+            <if test="lastModOperId != null">
+                #{lastModOperId,jdbcType=VARCHAR},
+            </if>
+            <if test="lastModOperDate != null">
+                #{lastModOperDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="state != null">
+                #{state,jdbcType=VARCHAR},
+            </if>
+            <if test="cityId != null">
+                #{cityId,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </sql>
+
+    <sql id="insertColumns">
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                id,
+            </if>
+            <if test="name != null">
+                `name`,
+            </if>
+            <if test="mobileNo != null">
+                mobile_no,
+            </if>
+            <if test="regDate != null">
+                reg_date,
+            </if>
+            <if test="updateDate != null">
+                update_date,
+            </if>
+            <if test="creOperId != null">
+                cre_oper_id,
+            </if>
+            <if test="lastModOperId != null">
+                last_mod_oper_id,
+            </if>
+            <if test="lastModOperDate != null">
+                last_mod_oper_date,
+            </if>
+            <if test="state != null">
+                state,
+            </if>
+            <if test="cityId != null">
+                city_id,
+            </if>
+        </trim>
+    </sql>
+
+    <sql id="updateColumnVal">
+        <set>
+            <if test="id != null" >
+                id = #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                t.name =  #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="mobileNo != null">
+                t.mobile_no =  #{mobileNo,jdbcType=VARCHAR},
+            </if>
+            <if test="regDate != null">
+                t.reg_date =  #{regDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateDate != null">
+                t.update_date =  #{updateDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="creOperId != null">
+                t.cre_oper_id =  #{creOperId,jdbcType=VARCHAR},
+            </if>
+            <if test="lastModOperId != null">
+                t.last_mod_oper_id =  #{lastModOperId,jdbcType=VARCHAR},
+            </if>
+            <if test="lastModOperDate != null">
+                t.last_mod_oper_date =  #{lastModOperDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="state != null">
+                t.state =  #{state,jdbcType=VARCHAR},
+            </if>
+            <if test="cityId != null">
+                t.city_id =  #{cityId,jdbcType=VARCHAR},
+            </if>
+        </set>
+    </sql>
+
+
+    <insert id="insertRecord">
+        INSERT INTO agency <include refid="insertColumns" /> <include refid="insertColumnsVal" />
+    </insert>
+
+    <select id="getRecordByKey" resultMap="BaseResultMap" >
+        SELECT * FROM agency t <include refid="keyWhere" />
+    </select>
+
+    <select id="getRecordByWhere" resultMap="BaseResultMap" >
+        SELECT * FROM agency t <include refid="where" />
+    </select>
+
+    <select id="getRecordListByWhere" resultMap="BaseResultMap" >
+        SELECT * FROM agency t <include refid="where" />
+    </select>
+
+    <update id="updateRecordByKey">
+        UPDATE agency t <include refid="updateColumnVal" /> <include refid="keyWhere" />
+    </update>
+</mapper>
