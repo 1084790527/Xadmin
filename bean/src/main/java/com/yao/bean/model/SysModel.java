@@ -18,6 +18,7 @@ public class SysModel {
     private String updateDate;
     private String lastDate;
     private String lastModOperId;
+    private String lastModOperName;
     private String lastModOperDate;
     private String lastAuditOperId;
     private String lastAuditOperDate;
@@ -26,6 +27,14 @@ public class SysModel {
     private String inState;
     private String agencyId;
     private String defaults;
+
+    public String getLastModOperName() {
+        return lastModOperName;
+    }
+
+    public void setLastModOperName(String lastModOperName) {
+        this.lastModOperName = lastModOperName;
+    }
 
     public String getId() {
         return id;

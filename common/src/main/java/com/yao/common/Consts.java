@@ -14,4 +14,8 @@ public interface Consts {
     public static final String AGENCY_STATE_DISABLE = "0";
     public static final String AGENCY_STATE_ENABLE = "1";
     public static final String AGENCY_STATE_DELETE = "2";
+
+    public static final String MANAGER_STATE_DISABLE = "0";
+    public static final String MANAGER_STATE_ENABLE = "1";
+    public static final String MANAGER_STATE_DELETE = "2";
 }

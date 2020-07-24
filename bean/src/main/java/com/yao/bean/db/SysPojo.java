@@ -17,6 +17,8 @@ public class SysPojo {
     private String password;
     private Date birthday;
     private Date regDate;
+    private Date startRegDate;
+    private Date endRegDate;
     private Date updateDate;
     private Date lastDate;
     private String lastModOperId;
@@ -28,6 +30,24 @@ public class SysPojo {
     private String inState;
     private String agencyId;
     private String defaults;
+
+    public Date getStartRegDate() {
+        return startRegDate;
+    }
+
+    public SysPojo setStartRegDate(Date startRegDate) {
+        this.startRegDate = startRegDate;
+        return this;
+    }
+
+    public Date getEndRegDate() {
+        return endRegDate;
+    }
+
+    public SysPojo setEndRegDate(Date endRegDate) {
+        this.endRegDate = endRegDate;
+        return this;
+    }
 
     public String getId() {
         return id;

@@ -18,4 +18,6 @@ public interface SysRoleDao {
     public List<SysRolePojo> getRecordListByWhere(SysRolePojo record);
 
     public int updateRecordByKey(SysRolePojo record);
+
+    public int deleteRecordByKey(SysRolePojo record);
 }

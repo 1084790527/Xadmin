@@ -189,6 +189,9 @@ public class DateUtil {
     }
 
     public static String getyyyy_MM_dd(Date time) {
+        if (time == null){
+            return null;
+        }
         return date_sdf.format(time);
     }
 }

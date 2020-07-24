@@ -50,12 +50,12 @@ public class AuthorityService {
     }
 
     public List<PrivilegesPojo> obtainPriAuthoritys(){
-        List<PrivilegesPojo> pojos = privilegesDao.getRecordListByWhere(new PrivilegesPojo().setInId(getPrIds()));
+        List<PrivilegesPojo> pojos = privilegesDao.getRecordListByWhere(new PrivilegesPojo().setInId(getPrIds()).setState("1"));
 //        log.info("pojos : "+JSON.toJSONString(pojos));
         return pojos;
     }
     public List<PrivilegesPojo> obtainPriAuthoritys(String roleId){
-        List<PrivilegesPojo> pojos = privilegesDao.getRecordListByWhere(new PrivilegesPojo().setInId(getPrIds(roleId)));
+        List<PrivilegesPojo> pojos = privilegesDao.getRecordListByWhere(new PrivilegesPojo().setInId(getPrIds(roleId)).setState("1"));
         return pojos;
     }
 

@@ -6,14 +6,13 @@ import com.alibaba.fastjson.JSONObject;
 import com.yao.bean.LoginInfo;
 import com.yao.bean.db.PrivilegesPojo;
 import com.yao.bean.db.RolePojo;
+import com.yao.bean.model.ManModify;
 import com.yao.bean.model.RoleModel;
 import com.yao.bean.model.SystemModel;
 import com.yao.common.Consts;
 import com.yao.common.util.IdWorker;
-import com.yao.sys.service.AuthorityService;
-import com.yao.sys.service.RoleService;
-import com.yao.sys.service.SystemService;
-import com.yao.sys.service.TestService;
+import com.yao.sys.dao.SysDao;
+import com.yao.sys.service.*;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +44,8 @@ public class BaseController {
     private AuthorityService authorityService;
     @Autowired
     private RoleService roleService;
+    @Autowired
+    private ManagerService managerService;
 
     @RequestMapping
     public String index_a(){
@@ -68,9 +69,22 @@ public class BaseController {
         return path;
     }
 
+    @GetMapping(value = "/manager/add")
+    public String managerAdd(Model model){
+        List<RoleModel> roles = roleService.getEnableRoles();
+        model.addAttribute("roles",roles);
+        return "/manager/add";
+    }
+    @GetMapping(value = "/manager/modify")
+    public String managerModify(@RequestParam(name = "id")String id,Model model){
+        ManModify modify = managerService.getModify(id);
+//        log.info("modify : "+JSON.toJSONString(modify));
+        model.addAttribute("modify",modify);
+        return "/manager/modify";
+    }
+
     @GetMapping(value = "/merchant/add")
     public String merchantAdd(Model model){
-
         List<RoleModel> roles = roleService.getEnableRoles();
         model.addAttribute("roles",roles);
         return "/merchant/add";

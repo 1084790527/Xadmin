@@ -39,10 +39,12 @@
 
     <sql id="keyWhere">
         <where>
-            and t.user_id =  #{userId,jdbcType=VARCHAR}
-        </where>
-        <where>
-            and t.role_id =  #{roleId,jdbcType=VARCHAR}
+            <if test="userId != null">
+                and t.user_id =  #{userId,jdbcType=VARCHAR}
+            </if>
+            <if test="roleId != null">
+                and t.role_id =  #{roleId,jdbcType=VARCHAR}
+            </if>
         </where>
     </sql>
 
@@ -143,5 +145,9 @@
 
     <update id="updateRecordByKey">
         UPDATE sys_role t <include refid="updateColumnVal" /> <include refid="keyWhere" />
+    </update>
+
+    <update id="deleteRecordByKey">
+        DELETE FROM sys_role t <include refid="keyWhere" />
     </update>
 </mapper>

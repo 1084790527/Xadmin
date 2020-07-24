@@ -29,7 +29,7 @@
         and t.id =  #{id,jdbcType=VARCHAR}
       </if>
       <if test="nickname != null">
-        and t.nickname =  #{nickname,jdbcType=VARCHAR}
+        and t.nickname like concat('%',#{nickname,jdbcType=VARCHAR},'%')
       </if>
       <if test="mobileNo != null">
         and t.mobile_no =  #{mobileNo,jdbcType=VARCHAR}
@@ -76,11 +76,20 @@
       <if test="state != null">
         and t.state =  #{state,jdbcType=VARCHAR}
       </if>
+      <if test="inState != null">
+        and t.state in( ${inState} )
+      </if>
       <if test="agencyId != null">
         and t.agency_id =  #{agencyId,jdbcType=VARCHAR}
       </if>
       <if test="defaults != null">
         and t.defaults =  #{defaults,jdbcType=VARCHAR}
+      </if>
+      <if test="startRegDate != null">
+        and <![CDATA[ t.reg_date >= #{startRegDate,jdbcType=TIMESTAMP} ]]>
+      </if>
+      <if test="endRegDate != null">
+        and <![CDATA[ t.reg_date <= #{endRegDate,jdbcType=TIMESTAMP} ]]>
       </if>
     </where>
   </sql>
