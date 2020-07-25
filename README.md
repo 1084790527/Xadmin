@@ -31,25 +31,25 @@ server.servlet.port 改成80 或者配置nginx
 
 SysApplication,main 运行项目 浏览器访问 http://localhost/sys/
 
-![输入图片说明](login.png "屏幕截图.png")
+![输入图片说明](https://gitee.com/bbbbwxb/Xadmin/raw/master/areadme/login.png "屏幕截图.png")
 
 1.1.5 登录系统，用户名/密码（1111/123456）
 
-![输入图片说明](index.png "屏幕截图.png")
+![输入图片说明](https://gitee.com/bbbbwxb/Xadmin/raw/master/areadme/index.png "屏幕截图.png")
 
 1.2 功能说明
 
 1.2.1 角色管理 新增角色(权限精确到每个按钮)
 
-![输入图片说明](role.png "屏幕截图.png")
+![输入图片说明](https://gitee.com/bbbbwxb/Xadmin/blob/master/areadme/role.png "屏幕截图.png")
 
-![输入图片说明](addrole.png "屏幕截图.png")
+![输入图片说明](https://gitee.com/bbbbwxb/Xadmin/raw/master/areadme/addrole.png "屏幕截图.png")
 
 1.2.2 管理员管理
 
-![输入图片说明](man.png "屏幕截图.png")
+![输入图片说明](https://gitee.com/bbbbwxb/Xadmin/blob/master/areadme/man.png "屏幕截图.png")
 
 1.2.3 商户管理
 
-![输入图片说明](mer.png "屏幕截图.png")
+![输入图片说明](https://gitee.com/bbbbwxb/Xadmin/blob/master/areadme/mer.png "屏幕截图.png")
 
