@@ -41,15 +41,15 @@ SysApplication,main 运行项目 浏览器访问 http://localhost/sys/
 
 1.2.1 角色管理 新增角色(权限精确到每个按钮)
 
-![输入图片说明](https://gitee.com/bbbbwxb/Xadmin/blob/master/areadme/role.png "屏幕截图.png")
+![输入图片说明](https://gitee.com/bbbbwxb/Xadmin/raw/master/areadme/role.png "屏幕截图.png")
 
 ![输入图片说明](https://gitee.com/bbbbwxb/Xadmin/raw/master/areadme/addrole.png "屏幕截图.png")
 
 1.2.2 管理员管理
 
-![输入图片说明](https://gitee.com/bbbbwxb/Xadmin/blob/master/areadme/man.png "屏幕截图.png")
+![输入图片说明](https://gitee.com/bbbbwxb/Xadmin/raw/master/areadme/man.png "屏幕截图.png")
 
 1.2.3 商户管理
 
-![输入图片说明](https://gitee.com/bbbbwxb/Xadmin/blob/master/areadme/mer.png "屏幕截图.png")
+![输入图片说明](https://gitee.com/bbbbwxb/Xadmin/raw/master/areadme/mer.png "屏幕截图.png")
 
