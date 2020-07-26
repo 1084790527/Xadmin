@@ -21,6 +21,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import sun.rmi.runtime.Log;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -67,6 +68,17 @@ public class BaseController {
 //        log.info("path : "+path);
 //        log.info(JSON.toJSONString(testService.sysPojos()));
         return path;
+    }
+
+    //退出
+    @GetMapping(value = "/loginOut")
+    public String loginOut(HttpSession session){
+        try {
+            session.removeAttribute(Consts.LOGIN_INFO);
+        }catch (Exception e){
+
+        }
+        return "redirect:/index";
     }
 
     @GetMapping(value = "/manager/add")

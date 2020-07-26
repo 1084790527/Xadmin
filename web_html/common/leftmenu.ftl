@@ -4,7 +4,7 @@
             <#list menus as menu>
                 <li>
                     <a href="javascript:;">
-                        <i class="iconfont left-nav-li" lay-tips="${menu.name}">&#xe6b8;</i>
+                        <i class="iconfont left-nav-li" lay-tips="${menu.name}">&#xe699;</i>
                         <cite>${menu.name}</cite>
                         <i class="iconfont nav_right">&#xe697;</i>
                     </a>

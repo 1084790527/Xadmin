@@ -44,7 +44,7 @@ public class SysInterceptor implements HandlerInterceptor {
             }
 
             LoginInfo info = (LoginInfo) o;
-            if ("/welcome".equals(path)||"/index".equals(path)||"/".equals(path)){
+            if ("/welcome".equals(path)||"/index".equals(path)||"/".equals(path)||"/loginOut".equals(path)){
                 return true;
             }
             Claims claims = jwtUtil.parseJWT(info.getToken());

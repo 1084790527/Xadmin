@@ -42,9 +42,9 @@
             <a href="javascript:;">${(LOGIN_INFO.nickname)!''}</a>
             <dl class="layui-nav-child">
                 <!-- 二级菜单 -->
-                <dd><a onclick="xadmin.open('个人信息','http://www.baidu.com')">个人信息</a></dd>
-                <dd><a onclick="xadmin.open('切换帐号','http://www.baidu.com')">切换帐号</a></dd>
-                <dd><a href="${path}/demo/login">退出</a></dd>
+                <dd><a onclick="xadmin.open('个人信息','http://www.baidu.com',500,800)">个人信息</a></dd>
+                <dd><a onclick="xadmin.open('修改密码','http://www.baidu.com',500,300)">修改密码</a></dd>
+                <dd><a href="${path}/loginOut">退出</a></dd>
             </dl>
         </li>
         <li class="layui-nav-item to-index">
