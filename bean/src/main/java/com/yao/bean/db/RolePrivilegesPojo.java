@@ -1,9 +1,10 @@
 package com.yao.bean.db;
 
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class RolePrivilegesPojo {
+public class RolePrivilegesPojo implements Serializable {
 
   private String privilegeId;
   private String roleId;

@@ -1,9 +1,10 @@
 package com.yao.bean.db;
 
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class AgencyPojo {
+public class AgencyPojo implements Serializable {
 
   private String id;
   private String name;

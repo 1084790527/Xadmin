@@ -1,10 +1,12 @@
 package com.yao.bean.bean;
 
+import java.io.Serializable;
+
 /**
  * @author : 妖妖
  * @date : 17:07 2020/7/13
  */
-public class LoginBean {
+public class LoginBean{
     private String mobileNo;
     private String password;
     private String captcha;

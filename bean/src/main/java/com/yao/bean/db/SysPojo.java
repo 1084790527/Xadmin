@@ -1,5 +1,6 @@
 package com.yao.bean.db;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -7,7 +8,7 @@ import java.util.Date;
  * @date : 16:34 2020/7/9
  */
 
-public class SysPojo {
+public class SysPojo implements Serializable{
     private String id;
     private String nickname;
     private String mobileNo;
