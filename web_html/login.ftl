@@ -3,7 +3,7 @@
 <html  class="x-admin-sm">
 <head>
 	<meta charset="UTF-8">
-	<title>后台登录-X-admin2.2</title>
+	<title>商户管理平台</title>
 	<meta name="renderer" content="webkit|ie-comp|ie-stand">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
@@ -22,67 +22,49 @@
 <body class="login-bg">
     
     <div class="login layui-anim layui-anim-up">
-        <div class="message">x-admin2.0-管理登录</div>
+        <div class="message">商户管理平台</div>
         <div id="darkbannerwrap"></div>
         
         <form method="post" class="layui-form">
             <input name="mobileNo" id="mobileNo" placeholder="手机号" value="1111" type="text" lay-verify="required" class="layui-input" >
             <hr class="hr15">
-            <input name="password" id="password" lay-verify="required" placeholder="密码" value="123456"  type="password" class="layui-input">
+            <input name="password" id="password" lay-verify="required" placeholder="密码" value="qaz123"  type="password" class="layui-input">
             <hr class="hr15">
-            <input value="登录" lay-submit lay-filter="login" style="width:100%;" type="button" onclick="login()">
+            <input value="登录" lay-filter="login" lay-submit="" style="width:100%;" type="button">
             <hr class="hr20" >
         </form>
     </div>
 
     <script type="text/javascript">
-        function msg(info) {
-            layui.use('form',function () {
-                layer.msg(info);
-            })
-        }
-
-        function login() {
-            var mobileNo = $('#mobileNo').val();
-            var password = $('#password').val();
-            $.ajax({
-                url : '${path}/login',
-                type : 'POST',
-                dataType : 'json',
-                data : {
-                    mobileNo : mobileNo,
-                    password : password
-                },
-                async : false,
-                success : function (data) {
-                    // msg(JSON.stringify(data))
-                    if (data.state){
-                        location.href='${path}/index'
-                    }else {
-                        msg(data.message);
-                    }
-                },
-                error : function (e) {
-                    msg(JSON.stringify(e));
-                }
+        $(function () {
+            layui.use(['form'],function () {
+                var form = layui.form;
+                form.on('submit(login)',
+                    function(data) {
+                        layer.load(2);
+                        // console.log(data.field);
+                        $.ajax({
+                            url : '${path}/login',
+                            type : 'POST',
+                            dataType : 'json',
+                            data : data.field,
+                            async : false,
+                            success : function (data) {
+                                // msg(JSON.stringify(data))
+                                if (data.state){
+                                    location.href='${path}/index'
+                                }else {
+                                    layer.alert(data.message);
+                                }
+                            },
+                            error : function (e) {
+                                layer.closeAll('loading');
+                                layer.alert(JSON.stringify(e));
+                            }
+                        });
+                    });
             });
-        }
-
-        <#--$(function  () {-->
-            <#--layui.use('form', function(){-->
-              <#--var form = layui.form;-->
-              <#--//监听提交-->
-              <#--form.on('submit(${path}/login)', function(data){-->
-                <#--// alert(888)-->
-                <#--&lt;#&ndash;layer.msg(JSON.stringify(data.field),function(){&ndash;&gt;-->
-                    <#--&lt;#&ndash;location.href='${path}/index'&ndash;&gt;-->
-                  <#--layer.msg(JSON.stringify(data));-->
-                <#--// });-->
-                <#--//   layer.msg("登入失败");-->
-                <#--return false;-->
-              <#--});-->
-            <#--});-->
-        <#--})-->
+        });
     </script>
     <!-- 底部结束 -->
 </body>

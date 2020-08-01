@@ -21,7 +21,7 @@ public class MybatisRedisCache implements Cache {
 
     public MybatisRedisCache(String id) {
         if (id == null) {
-            throw new IllegalArgumentException("Cache instances require an ID");
+            throw new IllegalArgumentException("缓存实例需要一个ID");
         }
         this.id = id;
     }
@@ -41,7 +41,7 @@ public class MybatisRedisCache implements Cache {
         RedisTemplate redisTemplate = getRedisTemplate();
         ValueOperations opsForValue = redisTemplate.opsForValue();
         opsForValue.set(key, value, EXPIRE_TIME_IN_MINUTES, TimeUnit.MINUTES);
-//        log.debug("Put query result to redis");
+//        log.debug("将查询结果放入Redis");
     }
     /**
      * Get cached query result from redis
@@ -53,7 +53,7 @@ public class MybatisRedisCache implements Cache {
     public Object getObject(Object key) {
         RedisTemplate redisTemplate = getRedisTemplate();
         ValueOperations opsForValue = redisTemplate.opsForValue();
-//        log.debug("Get cached query result from redis");
+//        log.debug("从Redis获取缓存的查询结果");
         return opsForValue.get(key);
     }
     /**
@@ -67,7 +67,7 @@ public class MybatisRedisCache implements Cache {
     public Object removeObject(Object key) {
         RedisTemplate redisTemplate = getRedisTemplate();
         redisTemplate.delete(key);
-//        log.debug("Remove cached query result from redis");
+//        log.debug("从Redis移除缓存的查询结果");
         return null;
     }
     /**
@@ -80,7 +80,7 @@ public class MybatisRedisCache implements Cache {
             connection.flushDb();
             return null;
         });
-//        log.debug("Clear all the cached query result from redis");
+//        log.debug("清除此缓存实例");
     }
     @Override
     public int getSize() {

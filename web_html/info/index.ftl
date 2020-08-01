@@ -22,24 +22,20 @@
 <div class="layui-fluid">
     <div class="layui-row">
         <form class="layui-form" method="post" id="form_data">
-            <input type="hidden" name="id" value="${modify.id}">
+            <div class="layui-form-item">
+                <label for="L_mobileNo" class="layui-form-label">
+                    <span class="x-red">*</span>手机号
+                </label>
+                <div class="layui-input-inline">
+                    <input type="text" id="L_mobileNo" disabled required="" value="${(sysModel.mobileNo)!''}" autocomplete="off" class="layui-input layui-disabled">
+                </div>
+            </div>
             <div class="layui-form-item">
                 <label for="L_nickname" class="layui-form-label">
                     <span class="x-red">*</span>昵称
                 </label>
                 <div class="layui-input-inline">
-                    <input type="text" id="L_nickname" name="nickname" value="${(modify.nickname)!''}" required="" autocomplete="off" class="layui-input">
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label for="L_mobileNo" class="layui-form-label">
-                    <span class="x-red">*</span>手机号/登入账号
-                </label>
-                <div class="layui-input-inline">
-                    <input type="text" id="L_mobileNo" name="mobileNo" value="${(modify.mobileNo)!''}" required="" autocomplete="off" class="layui-input">
-                </div>
-                <div class="layui-form-mid layui-word-aux">
-                    <span class="x-red">*</span>将会成为您唯一的登入账号
+                    <input type="text" id="L_nickname" name="nickname" value="${(sysModel.nickname)!''}" required="" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
@@ -47,7 +43,7 @@
                     <span class="x-red">*</span>真实姓名
                 </label>
                 <div class="layui-input-inline">
-                    <input type="text" id="L_realName" name="realName" value="${(modify.realName)!''}" required="" autocomplete="off" class="layui-input">
+                    <input type="text" id="L_realName" name="realName" value="${(sysModel.realName)!''}" required="" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
@@ -55,7 +51,7 @@
                     <span class="x-red">*</span>出生日期
                 </label>
                 <div class="layui-input-inline">
-                    <input type="text" id="L_birthday" name="birthday" value="${(modify.birthday)!''}" required="" autocomplete="off" placeholder="yyyy-MM-dd" class="layui-input">
+                    <input type="text" id="L_birthday" name="birthday" value="${(sysModel.birthday)!''}" required="" autocomplete="off" placeholder="yyyy-MM-dd" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
@@ -63,40 +59,24 @@
                     <span class="x-red">*</span>性别
                 </label>
                 <div class="layui-input-inline">
-                    <#if modify.sex == '0'>
+                    <#if sysModel.sex == '0'>
                         <input type="radio" name="sex" value="0" title="未知" checked="">
                         <input type="radio" name="sex" value="1" title="男">
                         <input type="radio" name="sex" value="2" title="女">
-                    <#elseif modify.sex == '1'>
+                    <#elseif sysModel.sex == '1'>
                         <input type="radio" name="sex" value="0" title="未知">
                         <input type="radio" name="sex" value="1" title="男" checked="">
                         <input type="radio" name="sex" value="2" title="女">
-                    <#elseif modify.sex == '2'>
+                    <#elseif sysModel.sex == '2'>
                         <input type="radio" name="sex" value="0" title="未知">
                         <input type="radio" name="sex" value="1" title="男">
                         <input type="radio" name="sex" value="2" title="女" checked="">
                     </#if>
-
                 </div>
             </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">
-                    <span class="x-red">*</span>角色
-                </label>
-                <div class="layui-input-block">
-                    <#list modify.roleIds as role>
-                        <#if role.state>
-                            <input type="checkbox" name="priIds" value="${role.roleId}" title="${role.name}" checked="">
-                        <#else >
-                            <input type="checkbox" name="priIds" value="${role.roleId}" title="${role.name}">
-                        </#if>
-                    </#list>
-                </div>
-            </div>
-
             <div class="layui-form-item">
                 <label class="layui-form-label"></label>
-                <button class="layui-btn" lay-filter="add" lay-submit="">更改</button>
+                <button class="layui-btn" lay-filter="upData" lay-submit="">修改</button>
             </div>
         </form>
     </div>
@@ -104,23 +84,22 @@
 <script>
     layui.use(['form', 'layer','jquery','laydate'],
             function() {
+                $ = layui.jquery;
                 var laydate = layui.laydate;
                 laydate.render({
                     elem: '#L_birthday'
                 });
-                $ = layui.jquery;
-                var form = layui.form,
-                        layer = layui.layer;
+                var form = layui.form,layer = layui.layer;
                 //监听提交
-                form.on('submit(add)',
+                form.on('submit(upData)',
                         function(data) {
-                            console.log(data);
+                            // console.log(data);
                             //发异步，把数据提交给后台
                             $.ajax({
-                                url : '${path}${Session["sys:manager:modify"]}',
+                                url : '${path}/info/index',
                                 type : 'POST',
                                 dataType : 'json',
-                                data : $('#form_data').serialize(),
+                                data : data.field,
                                 async : false,
                                 success : function (data) {
                                     if (data.state){
@@ -131,7 +110,7 @@
                                                     //关闭当前frame
                                                     xadmin.close();
                                                     // 可以对父窗口进行刷新
-                                                    xadmin.father_reload();
+                                                    // xadmin.father_reload();
                                                 });
                                     }else {
                                         layer.alert(data.message);
@@ -140,7 +119,6 @@
                                     layer.alert(JSON.stringify(e));
                                 }
                             });
-
                             return false;
                         });
             });

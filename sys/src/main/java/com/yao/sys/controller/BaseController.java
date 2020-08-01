@@ -8,8 +8,10 @@ import com.yao.bean.db.PrivilegesPojo;
 import com.yao.bean.db.RolePojo;
 import com.yao.bean.model.ManModify;
 import com.yao.bean.model.RoleModel;
+import com.yao.bean.model.SysModel;
 import com.yao.bean.model.SystemModel;
 import com.yao.common.Consts;
+import com.yao.common.util.DateUtil;
 import com.yao.common.util.IdWorker;
 import com.yao.sys.dao.SysDao;
 import com.yao.sys.service.*;
@@ -35,8 +37,8 @@ import java.util.List;
 @Slf4j
 public class BaseController {
 
-    @Autowired
-    private TestService testService;
+//    @Autowired
+//    private TestService testService;
     @Autowired
     private SystemService system;
     @Autowired
@@ -47,6 +49,8 @@ public class BaseController {
     private RoleService roleService;
     @Autowired
     private ManagerService managerService;
+    @Autowired
+    private InfoService infoService;
 
     @RequestMapping
     public String index_a(){
@@ -68,6 +72,14 @@ public class BaseController {
 //        log.info("path : "+path);
 //        log.info(JSON.toJSONString(testService.sysPojos()));
         return path;
+    }
+
+    @GetMapping(value = "/info/index")
+    public String info(Model model){
+        SysModel sysModel = infoService.getiInfo();
+        log.info("infoService.getiInfo() : "+JSON.toJSONString(sysModel));
+        model.addAttribute("sysModel",sysModel);
+        return "/info/index";
     }
 
     //退出
@@ -208,6 +220,7 @@ public class BaseController {
     @RequestMapping(value = "welcome")
     public String welcome(Model model){
         model.addAttribute("system",system.system());
+        model.addAttribute("currentTime", DateUtil.getyyyy_MM_ddHHmmss(new Date()));
         return "welcome";
     }
 }

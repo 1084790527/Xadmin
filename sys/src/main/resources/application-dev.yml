@@ -60,3 +60,6 @@ pagehelper:
   reasonable: false
   params: pageNum=pageHelperStart;pageSize=pageHelperRows;
   supportMethodsArguments: false
+#公共权限每个人都有
+interceptor:
+  noVerify: /welcome,/index,/,/loginOut,/info/index,/info/resetpwd

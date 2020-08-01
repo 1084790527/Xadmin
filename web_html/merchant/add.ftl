@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>欢迎页面-X-admin2.2</title>
+    <title>商户管理平台</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
@@ -106,8 +106,7 @@
     layui.use(['form', 'layer','jquery'],
         function() {
             $ = layui.jquery;
-            var form = layui.form,
-                    layer = layui.layer;
+            var form = layui.form,layer = layui.layer;
             //自定义验证规则
             form.verify({
                 password: [/(.+){6,12}$/, '密码必须6到12位'],
@@ -120,7 +119,7 @@
             //监听提交
             form.on('submit(add)',
                 function(data) {
-                    console.log(data);
+                    // console.log(data);
                     //发异步，把数据提交给后台
                     $.ajax({
                         url : '${path}${Session["sys:merchant:add"]}',

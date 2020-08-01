@@ -9,6 +9,7 @@ import com.yao.sys.service.AuthorityService;
 import io.jsonwebtoken.Claims;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -16,6 +17,8 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -30,6 +33,8 @@ public class SysInterceptor implements HandlerInterceptor {
     private JwtUtil jwtUtil;
     @Autowired
     private AuthorityService authorityService;
+    @Value("${interceptor.noVerify}")
+    private List<String> noVerify;
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
@@ -42,14 +47,13 @@ public class SysInterceptor implements HandlerInterceptor {
                 response.sendRedirect(request.getScheme()+"://"+request.getServerName()+request.getContextPath()+"/login");
                 return false;
             }
-
             LoginInfo info = (LoginInfo) o;
-            if ("/welcome".equals(path)||"/index".equals(path)||"/".equals(path)||"/loginOut".equals(path)){
-                return true;
-            }
             Claims claims = jwtUtil.parseJWT(info.getToken());
             //token 验证 先不验证
 
+            if (noVerify.contains(path)){
+                return true;
+            }
             //验证是否有这个权限
             Boolean authority = false;
             List<PrivilegesPojo> privilegesPojos = authorityService.obtainPriAuthoritys();
