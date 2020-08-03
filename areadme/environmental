@@ -1,0 +1,7 @@
+sh: ./a.sh: /bin/bash^M: bad interpreter: No such file or directory
+
+可以  yum -y install dos2unix
+
+然后 dos2unix start.sh
+
+重新运行脚本
