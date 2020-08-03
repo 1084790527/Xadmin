@@ -23,6 +23,6 @@ else
 fi
 
 rm -f tpid
-nohup java -jar ./$RESOURCE_NAME --spring.profiles.active=prod &
+nohup java -jar ./$RESOURCE_NAME --spring.profiles.active=prod >/dev/null 2>&1 &
 echo $! > tpid
 echo Start Success!

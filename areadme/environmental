@@ -5,3 +5,6 @@ sh: ./a.sh: /bin/bash^M: bad interpreter: No such file or directory
 然后 dos2unix start.sh
 
 重新运行脚本
+
+
+>/dev/null 2>&1 不生成nohup.out文件
