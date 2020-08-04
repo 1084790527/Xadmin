@@ -1,8 +1,10 @@
 # Xadmin
 
-该项目基于springboot + mybatis + freemarker 快速开发脚手架，包含商户管理，操作员管理角色权限管理
+该项目基于springboot + mybatis + redis + freemarker 快速开发脚手架，包含商户管理，操作员管理角色权限管理
 
-已亿业联盟后台管理为标准实现的开发脚手架
+以亿业联盟后台管理为标准实现的开发脚手架 
+
+支持分布式集群部署依赖包分离使用redis实现sessin共享
 
 系统基于Spring Boot 2.3 技术 前端使用xadmin开源模板layui，数据库使用mysql
 
