@@ -89,7 +89,11 @@
 			<artifactId>spring-session-data-redis</artifactId>
 			<version>2.3.0.RELEASE</version>
 		</dependency>
-
+		<dependency>
+			<groupId>de.codecentric</groupId>
+			<artifactId>spring-boot-admin-starter-client</artifactId>
+			<version>2.2.4</version>
+		</dependency>
 
 	</dependencies>
 

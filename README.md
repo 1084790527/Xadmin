@@ -6,6 +6,8 @@
 
 支持分布式集群部署依赖包分离使用redis实现sessin共享
 
+使用springBootAdmin监控分布式项目运行情况
+
 系统基于Spring Boot 2.3 技术 前端使用xadmin开源模板layui，数据库使用mysql
 
 ### 1 使用说明

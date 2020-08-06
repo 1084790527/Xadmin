@@ -5,7 +5,14 @@ server:
 #web:
 #  front:
 #    baseDir: web_html
+management:
+  auditevents:
+    enabled: false
 spring:
+  boot:
+    admin:
+      client:
+        url: http://127.0.0.1:7979/admin-server
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/x_admin?useUnicode=true&useSSL=false&serverTimezone=UTC
