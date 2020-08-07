@@ -52,6 +52,17 @@ spring:
 #    redis:
 #      flush-mode: # Sessions 刷新模式
 #      namespace: # Namespace for keys used to store sessions.
+  mail:
+    host: smtp.163.com
+    username: 13675062969@163.com
+    password: CZVGTVIFYREXPPRY
+    port: 465
+    properties:
+      from: 13675062969@163.com
+      mail:
+        smtp:
+          socketFactory:
+            class: javax.net.ssl.SSLSocketFactory
 mybatis:
   typeAliasesPackage: com.yao.sys.dao
   mapper-locations: classpath:mapper/*.xml
@@ -62,7 +73,7 @@ jwt:
     key: jsldkfuweio&*($@JHJBVDAYUIDhj
     ttl: 3600000
 logging:
-  config: D:/IdeaProjects/Xadmin/web_html/resources/log4j2-dev.xml
+  config: D:/IdeaProjects/Xadmin/config/log4j2-dev.xml
   level:
     com.yao.sys.dao: DEBUG
 

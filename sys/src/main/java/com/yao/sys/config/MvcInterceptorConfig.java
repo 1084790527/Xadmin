@@ -44,14 +44,14 @@ public class MvcInterceptorConfig extends WebMvcConfigurationSupport {
         .addPathPatterns("/**")
         .excludePathPatterns("/assets")
         .excludePathPatterns("/assets/**")
-        .excludePathPatterns("/demo/**")    //测试页面
-        .excludePathPatterns("/demo")    //测试页面
         .excludePathPatterns("/login")
         .excludePathPatterns("/login/**")
         .excludePathPatterns("/error/404")
         .excludePathPatterns("/404")
         .excludePathPatterns("/error/500")
         .excludePathPatterns("/500")
+        .excludePathPatterns("/text/api")   //测试接口
+        .excludePathPatterns("/text/api/**")
         ;
         super.addInterceptors(registry);
     }
@@ -59,7 +59,6 @@ public class MvcInterceptorConfig extends WebMvcConfigurationSupport {
     @Override
     protected void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/").setViewName("/index");
-        registry.addViewController("/demo").setViewName("/demo/index");
     }
 
 }
