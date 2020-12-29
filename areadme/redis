@@ -1,0 +1,8 @@
+redis 操作
+
+redis-cli
+auth wingzz00
+3.查看所有key值：keys *
+4.删除指定索引的值：del key
+5.清空整个 Redis 服务器的数据：flushall
+6.清空当前库中的所有 key：flushdb

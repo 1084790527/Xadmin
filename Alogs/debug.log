@@ -1,0 +1,85 @@
+2020-12-29 09:36:12.052 [http-nio-8080-exec-4] DEBUG com.yao.sys.dao.SysDao - Cache Hit Ratio [com.yao.sys.dao.SysDao]: 0.0
+2020-12-29 09:36:12.060 [http-nio-8080-exec-4] DEBUG com.yao.sys.dao.SysDao.getRecordByWhere - ==>  Preparing: SELECT * FROM sys t WHERE t.mobile_no = ? 
+2020-12-29 09:36:12.078 [http-nio-8080-exec-4] DEBUG com.yao.sys.dao.SysDao.getRecordByWhere - ==> Parameters: 1111(String)
+2020-12-29 09:36:12.094 [http-nio-8080-exec-4] DEBUG com.yao.sys.dao.SysDao.getRecordByWhere - <==      Total: 1
+2020-12-29 09:36:12.101 [http-nio-8080-exec-4] DEBUG com.yao.sys.dao.AgencyDao - Cache Hit Ratio [com.yao.sys.dao.AgencyDao]: 0.0
+2020-12-29 09:36:12.101 [http-nio-8080-exec-4] DEBUG com.yao.sys.dao.AgencyDao.getRecordByKey - ==>  Preparing: SELECT * FROM agency t WHERE t.id = ? 
+2020-12-29 09:36:12.103 [http-nio-8080-exec-4] DEBUG com.yao.sys.dao.AgencyDao.getRecordByKey - ==> Parameters: 1111(String)
+2020-12-29 09:36:12.105 [http-nio-8080-exec-4] DEBUG com.yao.sys.dao.AgencyDao.getRecordByKey - <==      Total: 1
+2020-12-29 09:36:12.105 [http-nio-8080-exec-4] DEBUG com.yao.sys.dao.SysDao.updateRecordByKey - ==>  Preparing: UPDATE sys t SET id = ?, last_date = ?, last_login_ip = ? WHERE t.id = ? 
+2020-12-29 09:36:12.107 [http-nio-8080-exec-4] DEBUG com.yao.sys.dao.SysDao.updateRecordByKey - ==> Parameters: 1111(String), 2020-12-29 09:36:12.105(Timestamp), 127.0.0.1(String), 1111(String)
+2020-12-29 09:36:12.108 [http-nio-8080-exec-4] DEBUG com.yao.sys.dao.SysDao.updateRecordByKey - <==    Updates: 1
+2020-12-29 09:36:12.536 [http-nio-8080-exec-3] DEBUG com.yao.sys.dao.SysRoleDao - Cache Hit Ratio [com.yao.sys.dao.SysRoleDao]: 0.0
+2020-12-29 09:36:12.537 [http-nio-8080-exec-3] DEBUG com.yao.sys.dao.SysRoleDao.getRecordListByWhere - ==>  Preparing: SELECT * FROM sys_role t WHERE t.user_id = ? and t.state = ? 
+2020-12-29 09:36:12.537 [http-nio-8080-exec-3] DEBUG com.yao.sys.dao.SysRoleDao.getRecordListByWhere - ==> Parameters: 1111(String), 1(String)
+2020-12-29 09:36:12.538 [http-nio-8080-exec-3] DEBUG com.yao.sys.dao.SysRoleDao.getRecordListByWhere - <==      Total: 1
+2020-12-29 09:36:12.541 [http-nio-8080-exec-3] DEBUG com.yao.sys.dao.RolePrivilegesDao - Cache Hit Ratio [com.yao.sys.dao.RolePrivilegesDao]: 0.0
+2020-12-29 09:36:12.541 [http-nio-8080-exec-3] DEBUG c.y.sys.dao.RolePrivilegesDao.getRecordListByWhere - ==>  Preparing: SELECT * FROM role_privileges t WHERE t.role_id in( 1 ) and t.state = ? 
+2020-12-29 09:36:12.541 [http-nio-8080-exec-3] DEBUG c.y.sys.dao.RolePrivilegesDao.getRecordListByWhere - ==> Parameters: 1(String)
+2020-12-29 09:36:12.544 [http-nio-8080-exec-3] DEBUG c.y.sys.dao.RolePrivilegesDao.getRecordListByWhere - <==      Total: 14
+2020-12-29 09:36:12.546 [http-nio-8080-exec-3] DEBUG com.yao.sys.dao.PrivilegesDao - Cache Hit Ratio [com.yao.sys.dao.PrivilegesDao]: 0.0
+2020-12-29 09:36:12.546 [http-nio-8080-exec-3] DEBUG com.yao.sys.dao.PrivilegesDao.getRecordListByWhere - ==>  Preparing: SELECT * FROM `privileges` t WHERE t.id in( 1,12,121,122,123,124,125,13,131,132,133,134,135,136 ) and t.state = ? 
+2020-12-29 09:36:12.546 [http-nio-8080-exec-3] DEBUG com.yao.sys.dao.PrivilegesDao.getRecordListByWhere - ==> Parameters: 1(String)
+2020-12-29 09:36:12.549 [http-nio-8080-exec-3] DEBUG com.yao.sys.dao.PrivilegesDao.getRecordListByWhere - <==      Total: 14
+2020-12-29 09:36:12.560 [http-nio-8080-exec-3] DEBUG com.yao.sys.dao.SysRoleDao - Cache Hit Ratio [com.yao.sys.dao.SysRoleDao]: 0.5
+2020-12-29 09:36:12.561 [http-nio-8080-exec-3] DEBUG com.yao.sys.dao.RolePrivilegesDao - Cache Hit Ratio [com.yao.sys.dao.RolePrivilegesDao]: 0.5
+2020-12-29 09:36:12.563 [http-nio-8080-exec-3] DEBUG com.yao.sys.dao.PrivilegesDao - Cache Hit Ratio [com.yao.sys.dao.PrivilegesDao]: 0.0
+2020-12-29 09:36:12.563 [http-nio-8080-exec-3] DEBUG com.yao.sys.dao.PrivilegesDao.treePrivileges - ==>  Preparing: SELECT * FROM `privileges` t WHERE t.id in( 1,12,121,122,123,124,125,13,131,132,133,134,135,136 ) and t.menu_level = ? and t.state = ? 
+2020-12-29 09:36:12.563 [http-nio-8080-exec-3] DEBUG com.yao.sys.dao.PrivilegesDao.treePrivileges - ==> Parameters: 0(Long), 1(String)
+2020-12-29 09:36:12.566 [http-nio-8080-exec-3] DEBUG com.yao.sys.dao.PrivilegesDao - Cache Hit Ratio [com.yao.sys.dao.PrivilegesDao]: 0.0
+2020-12-29 09:36:12.566 [http-nio-8080-exec-3] DEBUG com.yao.sys.dao.PrivilegesDao.getByParentId - ====>  Preparing: SELECT * FROM `privileges` t WHERE t.parent_id = ? AND t.state = '1' 
+2020-12-29 09:36:12.566 [http-nio-8080-exec-3] DEBUG com.yao.sys.dao.PrivilegesDao.getByParentId - ====> Parameters: 1(String)
+2020-12-29 09:36:12.569 [http-nio-8080-exec-3] DEBUG com.yao.sys.dao.PrivilegesDao - Cache Hit Ratio [com.yao.sys.dao.PrivilegesDao]: 0.0
+2020-12-29 09:36:12.569 [http-nio-8080-exec-3] DEBUG com.yao.sys.dao.PrivilegesDao.getByParentId - ======>  Preparing: SELECT * FROM `privileges` t WHERE t.parent_id = ? AND t.state = '1' 
+2020-12-29 09:36:12.569 [http-nio-8080-exec-3] DEBUG com.yao.sys.dao.PrivilegesDao.getByParentId - ======> Parameters: 12(String)
+2020-12-29 09:36:12.572 [http-nio-8080-exec-3] DEBUG com.yao.sys.dao.PrivilegesDao - Cache Hit Ratio [com.yao.sys.dao.PrivilegesDao]: 0.0
+2020-12-29 09:36:12.572 [http-nio-8080-exec-3] DEBUG com.yao.sys.dao.PrivilegesDao.getByParentId - ========>  Preparing: SELECT * FROM `privileges` t WHERE t.parent_id = ? AND t.state = '1' 
+2020-12-29 09:36:12.572 [http-nio-8080-exec-3] DEBUG com.yao.sys.dao.PrivilegesDao.getByParentId - ========> Parameters: 121(String)
+2020-12-29 09:36:12.573 [http-nio-8080-exec-3] DEBUG com.yao.sys.dao.PrivilegesDao.getByParentId - <========      Total: 0
+2020-12-29 09:36:12.574 [http-nio-8080-exec-3] DEBUG com.yao.sys.dao.PrivilegesDao - Cache Hit Ratio [com.yao.sys.dao.PrivilegesDao]: 0.0
+2020-12-29 09:36:12.575 [http-nio-8080-exec-3] DEBUG com.yao.sys.dao.PrivilegesDao.getByParentId - ========>  Preparing: SELECT * FROM `privileges` t WHERE t.parent_id = ? AND t.state = '1' 
+2020-12-29 09:36:12.575 [http-nio-8080-exec-3] DEBUG com.yao.sys.dao.PrivilegesDao.getByParentId - ========> Parameters: 122(String)
+2020-12-29 09:36:12.576 [http-nio-8080-exec-3] DEBUG com.yao.sys.dao.PrivilegesDao.getByParentId - <========      Total: 0
+2020-12-29 09:36:12.577 [http-nio-8080-exec-3] DEBUG com.yao.sys.dao.PrivilegesDao - Cache Hit Ratio [com.yao.sys.dao.PrivilegesDao]: 0.0
+2020-12-29 09:36:12.577 [http-nio-8080-exec-3] DEBUG com.yao.sys.dao.PrivilegesDao.getByParentId - ========>  Preparing: SELECT * FROM `privileges` t WHERE t.parent_id = ? AND t.state = '1' 
+2020-12-29 09:36:12.577 [http-nio-8080-exec-3] DEBUG com.yao.sys.dao.PrivilegesDao.getByParentId - ========> Parameters: 123(String)
+2020-12-29 09:36:12.578 [http-nio-8080-exec-3] DEBUG com.yao.sys.dao.PrivilegesDao.getByParentId - <========      Total: 0
+2020-12-29 09:36:12.579 [http-nio-8080-exec-3] DEBUG com.yao.sys.dao.PrivilegesDao - Cache Hit Ratio [com.yao.sys.dao.PrivilegesDao]: 0.0
+2020-12-29 09:36:12.579 [http-nio-8080-exec-3] DEBUG com.yao.sys.dao.PrivilegesDao.getByParentId - ========>  Preparing: SELECT * FROM `privileges` t WHERE t.parent_id = ? AND t.state = '1' 
+2020-12-29 09:36:12.579 [http-nio-8080-exec-3] DEBUG com.yao.sys.dao.PrivilegesDao.getByParentId - ========> Parameters: 124(String)
+2020-12-29 09:36:12.580 [http-nio-8080-exec-3] DEBUG com.yao.sys.dao.PrivilegesDao.getByParentId - <========      Total: 0
+2020-12-29 09:36:12.581 [http-nio-8080-exec-3] DEBUG com.yao.sys.dao.PrivilegesDao - Cache Hit Ratio [com.yao.sys.dao.PrivilegesDao]: 0.0
+2020-12-29 09:36:12.581 [http-nio-8080-exec-3] DEBUG com.yao.sys.dao.PrivilegesDao.getByParentId - ========>  Preparing: SELECT * FROM `privileges` t WHERE t.parent_id = ? AND t.state = '1' 
+2020-12-29 09:36:12.581 [http-nio-8080-exec-3] DEBUG com.yao.sys.dao.PrivilegesDao.getByParentId - ========> Parameters: 125(String)
+2020-12-29 09:36:12.582 [http-nio-8080-exec-3] DEBUG com.yao.sys.dao.PrivilegesDao.getByParentId - <========      Total: 0
+2020-12-29 09:36:12.582 [http-nio-8080-exec-3] DEBUG com.yao.sys.dao.PrivilegesDao.getByParentId - <======      Total: 5
+2020-12-29 09:36:12.590 [http-nio-8080-exec-3] DEBUG com.yao.sys.dao.PrivilegesDao - Cache Hit Ratio [com.yao.sys.dao.PrivilegesDao]: 0.0
+2020-12-29 09:36:12.591 [http-nio-8080-exec-3] DEBUG com.yao.sys.dao.PrivilegesDao.getByParentId - ======>  Preparing: SELECT * FROM `privileges` t WHERE t.parent_id = ? AND t.state = '1' 
+2020-12-29 09:36:12.591 [http-nio-8080-exec-3] DEBUG com.yao.sys.dao.PrivilegesDao.getByParentId - ======> Parameters: 13(String)
+2020-12-29 09:36:12.593 [http-nio-8080-exec-3] DEBUG com.yao.sys.dao.PrivilegesDao - Cache Hit Ratio [com.yao.sys.dao.PrivilegesDao]: 0.0
+2020-12-29 09:36:12.593 [http-nio-8080-exec-3] DEBUG com.yao.sys.dao.PrivilegesDao.getByParentId - ========>  Preparing: SELECT * FROM `privileges` t WHERE t.parent_id = ? AND t.state = '1' 
+2020-12-29 09:36:12.593 [http-nio-8080-exec-3] DEBUG com.yao.sys.dao.PrivilegesDao.getByParentId - ========> Parameters: 131(String)
+2020-12-29 09:36:12.594 [http-nio-8080-exec-3] DEBUG com.yao.sys.dao.PrivilegesDao.getByParentId - <========      Total: 0
+2020-12-29 09:36:12.595 [http-nio-8080-exec-3] DEBUG com.yao.sys.dao.PrivilegesDao - Cache Hit Ratio [com.yao.sys.dao.PrivilegesDao]: 0.0
+2020-12-29 09:36:12.595 [http-nio-8080-exec-3] DEBUG com.yao.sys.dao.PrivilegesDao.getByParentId - ========>  Preparing: SELECT * FROM `privileges` t WHERE t.parent_id = ? AND t.state = '1' 
+2020-12-29 09:36:12.595 [http-nio-8080-exec-3] DEBUG com.yao.sys.dao.PrivilegesDao.getByParentId - ========> Parameters: 132(String)
+2020-12-29 09:36:12.596 [http-nio-8080-exec-3] DEBUG com.yao.sys.dao.PrivilegesDao.getByParentId - <========      Total: 0
+2020-12-29 09:36:12.597 [http-nio-8080-exec-3] DEBUG com.yao.sys.dao.PrivilegesDao - Cache Hit Ratio [com.yao.sys.dao.PrivilegesDao]: 0.0
+2020-12-29 09:36:12.597 [http-nio-8080-exec-3] DEBUG com.yao.sys.dao.PrivilegesDao.getByParentId - ========>  Preparing: SELECT * FROM `privileges` t WHERE t.parent_id = ? AND t.state = '1' 
+2020-12-29 09:36:12.597 [http-nio-8080-exec-3] DEBUG com.yao.sys.dao.PrivilegesDao.getByParentId - ========> Parameters: 133(String)
+2020-12-29 09:36:12.598 [http-nio-8080-exec-3] DEBUG com.yao.sys.dao.PrivilegesDao.getByParentId - <========      Total: 0
+2020-12-29 09:36:12.599 [http-nio-8080-exec-3] DEBUG com.yao.sys.dao.PrivilegesDao - Cache Hit Ratio [com.yao.sys.dao.PrivilegesDao]: 0.0
+2020-12-29 09:36:12.599 [http-nio-8080-exec-3] DEBUG com.yao.sys.dao.PrivilegesDao.getByParentId - ========>  Preparing: SELECT * FROM `privileges` t WHERE t.parent_id = ? AND t.state = '1' 
+2020-12-29 09:36:12.599 [http-nio-8080-exec-3] DEBUG com.yao.sys.dao.PrivilegesDao.getByParentId - ========> Parameters: 134(String)
+2020-12-29 09:36:12.606 [http-nio-8080-exec-3] DEBUG com.yao.sys.dao.PrivilegesDao.getByParentId - <========      Total: 0
+2020-12-29 09:36:12.608 [http-nio-8080-exec-3] DEBUG com.yao.sys.dao.PrivilegesDao - Cache Hit Ratio [com.yao.sys.dao.PrivilegesDao]: 0.0
+2020-12-29 09:36:12.608 [http-nio-8080-exec-3] DEBUG com.yao.sys.dao.PrivilegesDao.getByParentId - ========>  Preparing: SELECT * FROM `privileges` t WHERE t.parent_id = ? AND t.state = '1' 
+2020-12-29 09:36:12.608 [http-nio-8080-exec-3] DEBUG com.yao.sys.dao.PrivilegesDao.getByParentId - ========> Parameters: 135(String)
+2020-12-29 09:36:12.608 [http-nio-8080-exec-3] DEBUG com.yao.sys.dao.PrivilegesDao.getByParentId - <========      Total: 0
+2020-12-29 09:36:12.610 [http-nio-8080-exec-3] DEBUG com.yao.sys.dao.PrivilegesDao - Cache Hit Ratio [com.yao.sys.dao.PrivilegesDao]: 0.0
+2020-12-29 09:36:12.610 [http-nio-8080-exec-3] DEBUG com.yao.sys.dao.PrivilegesDao.getByParentId - ========>  Preparing: SELECT * FROM `privileges` t WHERE t.parent_id = ? AND t.state = '1' 
+2020-12-29 09:36:12.610 [http-nio-8080-exec-3] DEBUG com.yao.sys.dao.PrivilegesDao.getByParentId - ========> Parameters: 136(String)
+2020-12-29 09:36:12.611 [http-nio-8080-exec-3] DEBUG com.yao.sys.dao.PrivilegesDao.getByParentId - <========      Total: 0
+2020-12-29 09:36:12.611 [http-nio-8080-exec-3] DEBUG com.yao.sys.dao.PrivilegesDao.getByParentId - <======      Total: 6
+2020-12-29 09:36:12.611 [http-nio-8080-exec-3] DEBUG com.yao.sys.dao.PrivilegesDao.getByParentId - <====      Total: 2
+2020-12-29 09:36:12.611 [http-nio-8080-exec-3] DEBUG com.yao.sys.dao.PrivilegesDao.treePrivileges - <==      Total: 1
