@@ -93,7 +93,7 @@
                             // xadmin.father_reload();
                         })
                     }else {
-                        layer.alert(res.message);
+                        layer.alert(res.msg);
                     }
                 },error : function (e) {
                     layer.alert(e)

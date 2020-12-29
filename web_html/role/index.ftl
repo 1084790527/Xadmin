@@ -37,7 +37,7 @@
                     <form class="layui-form layui-col-space5" id="form_data">
                     <#if Session["sys:role:add"]?exists>
                         <a onclick="xadmin.open('${Session["sys:role:add_name"]}','${path}${Session["sys:role:add"]}',600,400)">
-                            <i class="iconfont">&#xe6b9;</i>${Session["sys:merchant:add_name"]}
+                            <i class="iconfont">&#xe6b9;</i>${Session["sys:role:add_name"]}
                         </a>
                     </#if>
                         <div class="layui-inline layui-show-xs-block">
@@ -91,7 +91,6 @@
     layui.use(['table','form'],function () {
         var form = layui.form;
         var table = layui.table;
-        // var form = layui.form;
         table.render({
             elem: '#role'
             ,url:'${path}${Session["sys:role"]}'
@@ -127,6 +126,54 @@
             );
             return false;
         });
+        table.on('toolbar()', function (obj) {
+            var config = obj.config;
+            var btnElem = $(this);
+            var tableId = config.id;
+            var tableView = config.elem.next();
+            switch (obj.event) {
+                case 'LAYTABLE_COLS':
+                    // 给筛选列添加全选还有反选的功能
+                    var panelElem = btnElem.find('.layui-table-tool-panel');
+                    var checkboxElem = panelElem.find('[lay-filter="LAY_TABLE_TOOL_COLS"]');
+                    var checkboxCheckedElem = panelElem.find('[lay-filter="LAY_TABLE_TOOL_COLS"]:checked');
+                    $('<li class="layui-form" lay-filter="LAY_TABLE_TOOL_COLS_FORM">' +
+                            '<input type="checkbox" lay-skin="primary" lay-filter="LAY_TABLE_TOOL_COLS_ALL" '
+                            + ((checkboxElem.length === checkboxCheckedElem.length) ? 'checked' : '') + ' title="全选">' +
+                            '<span class="LAY_TABLE_TOOL_COLS_Invert_Selection">反选</span></li>')
+                            .insertBefore(panelElem.find('li').first())
+                            .on('click', '.LAY_TABLE_TOOL_COLS_Invert_Selection', function (event) {
+                                layui.stope(event);
+                                // 反选逻辑
+                                panelElem.find('[lay-filter="LAY_TABLE_TOOL_COLS"]+').click();
+                            });
+                    form.render('checkbox', 'LAY_TABLE_TOOL_COLS_FORM');
+                    break;
+            }
+        });
+
+        // 监听筛选列panel中的全选
+        form.on('checkbox(LAY_TABLE_TOOL_COLS_ALL)', function (obj) {
+            $(obj.elem).closest('ul')
+                    .find('[lay-filter="LAY_TABLE_TOOL_COLS"]' + (obj.elem.checked ? ':not(:checked)' : ':checked') + '+').click();
+        });
+
+        // 监听筛选列panel中的单个记录的change
+        $(document).on('change', 'input[lay-filter="LAY_TABLE_TOOL_COLS"]', function (event) {
+            var elemCurr = $(this);
+            // 筛选列单个点击的时候同步全选的状态
+            $('input[lay-filter="LAY_TABLE_TOOL_COLS_ALL"]')
+                    .prop('checked',
+                            elemCurr.prop('checked') ? (!$('input[lay-filter="LAY_TABLE_TOOL_COLS"]').not(':checked').length) : false);
+            form.render('checkbox', 'LAY_TABLE_TOOL_COLS_FORM');
+        });
+        form.on('submit(sreach)',function (data) {
+            table.reload('table',{
+                        where:data.field
+                    }
+            );
+            return false;
+        });
         table.on('tool(test)', function(obj) {
             var data = obj.data;
             console.log("tab 监听");
@@ -134,6 +181,7 @@
                 case 'disable':
                     //停用
                     // layer.alert(JSON.stringify(data));
+                    <#if Session["sys:role:disable"]?exists>
                     $.ajax({
                         url : '${path}${Session["sys:role:disable"]}',
                         type : 'POST',
@@ -144,15 +192,17 @@
                             if (data.state){
                                 table.reload('roleId',{});
                             }else {
-                                layer.alert(data.message);
+                                layer.alert(data.msg);
                             }
                         },error : function (e) {
                             layer.alert(JSON.stringify(e));
                         }
                     });
+                    </#if>
                     break;
                 case 'enable':
                     //启用
+                    <#if Session["sys:role:enable"]?exists>
                     $.ajax({
                         url : '${path}${Session["sys:role:enable"]}',
                         type : 'POST',
@@ -163,20 +213,24 @@
                             if (data.state){
                                 table.reload('roleId',{});
                             }else {
-                                layer.alert(data.message);
+                                layer.alert(data.msg);
                             }
                         },error : function (e) {
                             layer.alert(JSON.stringify(e));
                         }
                     });
+                    </#if>
                     break;
                 case 'modify':
                     //修改
                     // layer.msg(JSON.stringify(data));
+                    <#if Session["sys:role:modify"]?exists>
                     xadmin.open('${Session["sys:role:modify_name"]}','${path}${Session["sys:role:modify"]}?id='+data.id,600,400);
+                    </#if>
                     break;
                 case 'delete':
                     //删除
+                    <#if Session["sys:role:delete"]?exists>
                     $.ajax({
                         url : '${path}${Session["sys:role:delete"]}',
                         type : 'POST',
@@ -187,12 +241,14 @@
                             if (data.state){
                                 table.reload('roleId',{});
                             }else {
-                                layer.alert(data.message);
+                                layer.alert(data.msg);
                             }
                         },error : function (e) {
                             layer.alert(JSON.stringify(e));
                         }
                     });
+                    </#if>
+
                     break;
             }
         });

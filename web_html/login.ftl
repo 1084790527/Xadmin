@@ -26,9 +26,9 @@
         <div id="darkbannerwrap"></div>
         
         <form method="post" class="layui-form">
-            <input name="mobileNo" id="mobileNo" placeholder="手机号" value="1111" type="text" lay-verify="required" class="layui-input" >
+            <input name="mobileNo" id="mobileNo" placeholder="手机号" value="" type="text" lay-verify="required" class="layui-input" >
             <hr class="hr15">
-            <input name="password" id="password" lay-verify="required" placeholder="密码" value="qaz123"  type="password" class="layui-input">
+            <input name="password" id="password" lay-verify="required" placeholder="密码" value=""  type="password" class="layui-input">
             <hr class="hr15">
             <input value="登录" lay-filter="login" lay-submit="" style="width:100%;" type="button">
             <hr class="hr20" >
@@ -36,6 +36,7 @@
     </div>
 
     <script type="text/javascript">
+        // console.log(document.getElementById('input_profile_user_password').value());
         $(function () {
             layui.use(['form'],function () {
                 var form = layui.form;
@@ -54,7 +55,7 @@
                                 if (data.state){
                                     location.href='${path}/index'
                                 }else {
-                                    layer.alert(data.message);
+                                    layer.alert(data.msg);
                                 }
                             },
                             error : function (e) {

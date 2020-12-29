@@ -1,6 +1,8 @@
 package com.yao.sys.config;
 
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.apache.ibatis.cache.Cache;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
@@ -12,8 +14,9 @@ import java.util.concurrent.TimeUnit;
  * @author : 妖妖
  * @date : 19:56 2020/7/30
  */
-@Slf4j
 public class MybatisRedisCache implements Cache {
+
+    private static Log log = LogFactory.getLog(MybatisRedisCache.class);
     private final ReadWriteLock readWriteLock = new ReentrantReadWriteLock();
     private final String id; // cache instance id
     private RedisTemplate redisTemplate;

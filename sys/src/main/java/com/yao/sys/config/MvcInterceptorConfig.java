@@ -1,7 +1,10 @@
 package com.yao.sys.config;
 
 import com.yao.sys.interceptor.SysInterceptor;
+import com.yao.sys.task.SchedulerTask;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
@@ -21,29 +24,30 @@ import java.util.List;
  * @date : 15:07 2020/7/9
  */
 @Configuration
-@Slf4j
+//@Slf4j
 public class MvcInterceptorConfig extends WebMvcConfigurationSupport {
 
 
-    @Value("${spring.resources.static-locations}")
-    private String locations;
+    private static Log log = LogFactory.getLog(MvcInterceptorConfig.class);
+//    @Value("${spring.resources.static-locations}")
+//    private String locations;
 
     @Autowired
     private SysInterceptor sysInterceptor;
 
-    @Override
-    protected void addResourceHandlers(ResourceHandlerRegistry registry) {
+//    @Override
+//    protected void addResourceHandlers(ResourceHandlerRegistry registry) {
         //配置静态文件
-        registry.addResourceHandler("/assets/**").addResourceLocations(locations);
-    }
+//        registry.addResourceHandler("/assets/**").addResourceLocations(locations);
+//    }
 
     @Override
     protected void addInterceptors(InterceptorRegistry registry) {
 
         registry.addInterceptor(sysInterceptor)
         .addPathPatterns("/**")
-        .excludePathPatterns("/assets")
-        .excludePathPatterns("/assets/**")
+//        .excludePathPatterns("/assets")
+//        .excludePathPatterns("/assets/**")
         .excludePathPatterns("/login")
         .excludePathPatterns("/login/**")
         .excludePathPatterns("/error/404")
@@ -52,6 +56,7 @@ public class MvcInterceptorConfig extends WebMvcConfigurationSupport {
         .excludePathPatterns("/500")
         .excludePathPatterns("/text/api")   //测试接口
         .excludePathPatterns("/text/api/**")
+        .excludePathPatterns("/desk")
         ;
         super.addInterceptors(registry);
     }

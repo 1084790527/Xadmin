@@ -5,6 +5,8 @@ import com.yao.bean.model.SysModel;
 import com.yao.bean.vo.ResultObj;
 import com.yao.sys.service.InfoService;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,9 +19,10 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RequestMapping(value = "/info")
 @RestController
-@Slf4j
+//@Slf4j
 public class InfoController {
 
+    private static Log log = LogFactory.getLog(InfoController.class);
     @Autowired
     private InfoService infoService;
 
@@ -31,7 +34,7 @@ public class InfoController {
             resultObj.setState(true);
         }catch (Exception e){
             log.debug(e.getMessage(),e);
-            resultObj.setState(false).setMessage(e.getMessage());
+            resultObj.setState(false).setMsg(e.getMessage());
         }
         return resultObj;
     }
@@ -44,7 +47,7 @@ public class InfoController {
             resultObj.setState(true);
         }catch (Exception e){
             log.debug(e.getMessage(),e);
-            resultObj.setState(false).setMessage(e.getMessage());
+            resultObj.setState(false).setMsg(e.getMessage());
         }
         return resultObj;
     }

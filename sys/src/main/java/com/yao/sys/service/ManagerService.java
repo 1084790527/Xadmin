@@ -15,10 +15,13 @@ import com.yao.sys.dao.RoleDao;
 import com.yao.sys.dao.SysDao;
 import com.yao.sys.dao.SysRoleDao;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.DigestUtils;
+import test.ServiceTest;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
@@ -31,9 +34,10 @@ import java.util.List;
  */
 @Service
 @Transactional
-@Slf4j
+//@Slf4j
 public class ManagerService {
 
+    private static Log log = LogFactory.getLog(ManagerService.class);
     @Autowired
     private SysDao sysDao;
     @Autowired

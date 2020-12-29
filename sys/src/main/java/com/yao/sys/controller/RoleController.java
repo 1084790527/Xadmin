@@ -8,6 +8,8 @@ import com.yao.bean.vo.ResultObj;
 import com.yao.common.Consts;
 import com.yao.sys.service.RoleService;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,8 +21,9 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping(value = "/role")
-@Slf4j
+//@Slf4j
 public class RoleController {
+    private static Log log = LogFactory.getLog(RoleController.class);
 
     @Autowired
     private RoleService roleService;
@@ -39,7 +42,7 @@ public class RoleController {
         }catch (Exception e){
             log.error("角色添加异常",e);
             resultObj.setState(false);
-            resultObj.setMessage(e.getMessage());
+            resultObj.setMsg(e.getMessage());
         }
         return resultObj;
     }
@@ -52,7 +55,7 @@ public class RoleController {
         }catch (Exception e){
             log.error("角色修改异常",e);
             resultObj.setState(false);
-            resultObj.setMessage(e.getMessage());
+            resultObj.setMsg(e.getMessage());
         }
         return resultObj;
     }
@@ -65,7 +68,7 @@ public class RoleController {
         }catch (Exception e){
             log.error("角色停用异常",e);
             resultObj.setState(false);
-            resultObj.setMessage(e.getMessage());
+            resultObj.setMsg(e.getMessage());
         }
         return resultObj;
     }
@@ -78,7 +81,7 @@ public class RoleController {
         }catch (Exception e){
             log.error("角色启用异常",e);
             resultObj.setState(false);
-            resultObj.setMessage(e.getMessage());
+            resultObj.setMsg(e.getMessage());
         }
         return resultObj;
     }
@@ -91,7 +94,7 @@ public class RoleController {
         }catch (Exception e){
             log.error("角色删除异常",e);
             resultObj.setState(false);
-            resultObj.setMessage(e.getMessage());
+            resultObj.setMsg(e.getMessage());
         }
         return resultObj;
     }

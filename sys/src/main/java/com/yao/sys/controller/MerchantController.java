@@ -9,6 +9,8 @@ import com.yao.bean.vo.ResultObj;
 import com.yao.common.Consts;
 import com.yao.sys.service.MerchantService;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,9 +24,10 @@ import java.util.List;
  */
 @RestController
 @RequestMapping(value = "/merchant")
-@Slf4j
+//@Slf4j
 public class MerchantController {
 
+    private static Log log = LogFactory.getLog(MerchantController.class);
     @Autowired
     private MerchantService merchantService;
 
@@ -40,11 +43,11 @@ public class MerchantController {
         try {
             merchantService.resetPassword(agencyRegModel);
             resultObj.setState(true);
-            resultObj.setMessage("密码修改成功");
+            resultObj.setMsg("密码修改成功");
         }catch (Exception e){
             log.error("添加商户错误",e);
             resultObj.setState(false);
-            resultObj.setMessage(e.getMessage());
+            resultObj.setMsg(e.getMessage());
         }
         return resultObj;
     }
@@ -59,7 +62,7 @@ public class MerchantController {
         }catch (Exception e){
             log.error("添加商户错误",e);
             resultObj.setState(false);
-            resultObj.setMessage(e.getMessage());
+            resultObj.setMsg(e.getMessage());
         }
         return resultObj;
     }
@@ -72,7 +75,7 @@ public class MerchantController {
         }catch (Exception e){
             log.error("停用商户错误",e);
             resultObj.setState(false);
-            resultObj.setMessage(e.getMessage());
+            resultObj.setMsg(e.getMessage());
         }
         return resultObj;
     }
@@ -85,7 +88,7 @@ public class MerchantController {
         }catch (Exception e){
             log.error("启用商户错误",e);
             resultObj.setState(false);
-            resultObj.setMessage(e.getMessage());
+            resultObj.setMsg(e.getMessage());
         }
         return resultObj;
     }
@@ -98,7 +101,7 @@ public class MerchantController {
         }catch (Exception e){
             log.error("删除商户错误",e);
             resultObj.setState(false);
-            resultObj.setMessage(e.getMessage());
+            resultObj.setMsg(e.getMessage());
         }
         return resultObj;
     }

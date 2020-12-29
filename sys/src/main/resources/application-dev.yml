@@ -1,27 +1,20 @@
 server:
   servlet:
-    context-path: /sys
+    context-path: /httb
   port: 8080
-#web:
-#  front:
-#    baseDir: web_html
 management:
   auditevents:
     enabled: false
 spring:
-  boot:
-    admin:
-      client:
-        url: http://127.0.0.1:7979/admin-server
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/x_admin?useUnicode=true&useSSL=false&serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/ht_tb_data?useUnicode=true&useSSL=false&serverTimezone=UTC
     username: root
     password: wingzz00
   freemarker:
     suffix: .ftl
 #    templateEncoding: UTF-8
-    templateLoaderPath: file:D:/IdeaProjects/Xadmin/web_html/
+    templateLoaderPath: file:D:/IdeaProjects/ht_tb_web/web_html/
     charset: UTF-8
     content-type: text/html;charset=UTF-8
 #    default_encoding: UTF-8
@@ -29,12 +22,8 @@ spring:
     expose-session-attributes: true
     # 设置上下文路径
     request-context-attribute: request
-  mvc:
-    static-path-pattern: /assets/**
-  resources:
-    static-locations: file:D:/IdeaProjects/Xadmin/web_html/assets/
   redis:
-    database: 0
+    database: 1
     host: 127.0.0.1
     port: 6379
     password: wingzz00
@@ -47,22 +36,7 @@ spring:
   cache:
     type: redis
   session:
-    store-type: redis
     timeout: 86400 # Session 过期时间，单位s
-#    redis:
-#      flush-mode: # Sessions 刷新模式
-#      namespace: # Namespace for keys used to store sessions.
-  mail:
-    host: smtp.163.com
-    username: 13675062969@163.com
-    password: CZVGTVIFYREXPPRY
-    port: 465
-    properties:
-      from: 13675062969@163.com
-      mail:
-        smtp:
-          socketFactory:
-            class: javax.net.ssl.SSLSocketFactory
 mybatis:
   typeAliasesPackage: com.yao.sys.dao
   mapper-locations: classpath:mapper/*.xml
@@ -73,10 +47,9 @@ jwt:
     key: jsldkfuweio&*($@JHJBVDAYUIDhj
     ttl: 3600000
 logging:
-  config: D:/IdeaProjects/Xadmin/config/log4j2-dev.xml
   level:
     com.yao.sys.dao: DEBUG
-
+  config: classpath:logback-spring.xml
 pagehelper:
   offsetAsPageNum: true
   rowBoundsWithCount: true
@@ -86,4 +59,12 @@ pagehelper:
   supportMethodsArguments: false
 #公共权限每个人都有
 interceptor:
-  noVerify: /welcome,/index,/,/loginOut,/info/index,/info/resetpwd
+  noVerify: /welcome,/index,/,/loginOut,/info/index,/info/resetpwd,/text/frame
+tb:
+  file:
+    url: D:\logs\tb\xlsxFile\
+  khd:
+    aes: NVHGIYTXGHKCPVVLWWDS
+  dirPath: D:\logs\tb\xlsxData\
+
+

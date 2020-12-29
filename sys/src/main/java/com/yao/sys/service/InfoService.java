@@ -5,8 +5,11 @@ import com.yao.bean.db.SysPojo;
 import com.yao.bean.model.SysModel;
 import com.yao.common.Consts;
 import com.yao.common.util.DateUtil;
+import com.yao.sys.controller.TextApiController;
 import com.yao.sys.dao.SysDao;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,6 +17,7 @@ import org.springframework.util.DigestUtils;
 
 import javax.servlet.http.HttpSession;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author : 妖妖
@@ -21,9 +25,10 @@ import java.util.Date;
  */
 @Service
 @Transactional
-@Slf4j
+//@Slf4j
 public class InfoService {
 
+    private static Log log = LogFactory.getLog(InfoService.class);
     @Autowired
     private SysDao sysDao;
     @Autowired
@@ -61,4 +66,5 @@ public class InfoService {
         }
         sysDao.updateRecordByKey(new SysPojo().setId(info.getId()).setPassword(DigestUtils.md5DigestAsHex(newPwd.getBytes())).setUpdateDate(new Date()));
     }
+
 }

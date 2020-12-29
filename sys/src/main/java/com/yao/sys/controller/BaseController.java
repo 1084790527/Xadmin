@@ -16,13 +16,12 @@ import com.yao.common.util.IdWorker;
 import com.yao.sys.dao.SysDao;
 import com.yao.sys.service.*;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.Test;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import sun.rmi.runtime.Log;
-
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.Date;
@@ -34,9 +33,9 @@ import java.util.List;
  */
 @RequestMapping
 @Controller
-@Slf4j
+//@Slf4j
 public class BaseController {
-
+    private static Log log = LogFactory.getLog(BaseController.class);
 //    @Autowired
 //    private TestService testService;
     @Autowired
@@ -73,6 +72,8 @@ public class BaseController {
 //        log.info(JSON.toJSONString(testService.sysPojos()));
         return path;
     }
+
+
 
     @GetMapping(value = "/info/index")
     public String info(Model model){
@@ -215,6 +216,10 @@ public class BaseController {
     @RequestMapping(value = "/{one}/{two}")
     public String pathTwo(@PathVariable(name = "one")String one,@PathVariable(name = "two")String two){
         return one+"/"+two;
+    }
+    @RequestMapping(value = "/{one}/{two}/{the}")
+    public String pathTwo(@PathVariable(name = "one")String one,@PathVariable(name = "two")String two,@PathVariable(name = "the")String the){
+        return one+"/"+two+"/"+the;
     }
 
     @RequestMapping(value = "welcome")

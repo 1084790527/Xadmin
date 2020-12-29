@@ -8,6 +8,8 @@ import com.yao.common.util.JwtUtil;
 import com.yao.sys.service.AuthorityService;
 import io.jsonwebtoken.Claims;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -26,9 +28,10 @@ import java.util.List;
  * @date : 15:05 2020/7/9
  */
 @Component
-@Slf4j
+//@Slf4j
 public class SysInterceptor implements HandlerInterceptor {
 
+    private static Log log = LogFactory.getLog(SysInterceptor.class);
     @Autowired
     private JwtUtil jwtUtil;
     @Autowired
@@ -38,7 +41,7 @@ public class SysInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-//        log.info(request.getServletPath());
+        log.info(request.getServletPath()+"   "+request.getMethod());
         HttpSession session = request.getSession();
         String path = request.getServletPath();
         try {
@@ -49,8 +52,10 @@ public class SysInterceptor implements HandlerInterceptor {
             }
             LoginInfo info = (LoginInfo) o;
             Claims claims = jwtUtil.parseJWT(info.getToken());
-            //token 验证 先不验证
-
+            if (claims == null || !claims.getId().equals(info.getId())){
+                response.sendRedirect(request.getScheme()+"://"+request.getServerName()+"/"+request.getContextPath()+"/login");
+                return false;
+            }
             if (noVerify.contains(path)){
                 return true;
             }
@@ -66,7 +71,6 @@ public class SysInterceptor implements HandlerInterceptor {
             response.sendRedirect(request.getScheme()+"://"+request.getServerName()+request.getContextPath()+"/error/404");
             return false;
         }catch (Exception e){
-            System.out.println(e);
             log.error("拦截器异常："+e);
             response.sendRedirect(request.getScheme()+"://"+request.getServerName()+"/"+request.getContextPath()+"/login");
             return false;

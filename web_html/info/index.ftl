@@ -113,7 +113,7 @@
                                                     // xadmin.father_reload();
                                                 });
                                     }else {
-                                        layer.alert(data.message);
+                                        layer.alert(data.msg);
                                     }
                                 },error : function (e) {
                                     layer.alert(JSON.stringify(e));

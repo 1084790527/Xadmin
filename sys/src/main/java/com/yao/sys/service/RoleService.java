@@ -17,6 +17,8 @@ import com.yao.sys.dao.RoleDao;
 import com.yao.sys.dao.RolePrivilegesDao;
 import com.yao.sys.dao.SysDao;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -32,8 +34,9 @@ import java.util.List;
  */
 @Service
 @Transactional
-@Slf4j
+//@Slf4j
 public class RoleService {
+    private static Log log = LogFactory.getLog(RoleService.class);
 
     @Autowired
     private HttpSession httpSession;

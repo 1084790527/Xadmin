@@ -7,6 +7,8 @@ import com.yao.common.util.IpAddress;
 import com.yao.bean.LoginInfo;
 import com.yao.sys.service.LoginService;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,9 +23,10 @@ import javax.servlet.http.HttpSession;
  */
 @RestController
 @RequestMapping(value = "/login")
-@Slf4j
+//@Slf4j
 public class LoginController {
 
+    private static Log log = LogFactory.getLog(LoginController.class);
     @Autowired
     private LoginService loginService;
 
@@ -38,7 +41,7 @@ public class LoginController {
         }catch (Exception e){
             log.error("登入异常",e);
             resultObj.setState(false);
-            resultObj.setMessage(e.getMessage());
+            resultObj.setMsg(e.getMessage());
         }
         return resultObj;
     }

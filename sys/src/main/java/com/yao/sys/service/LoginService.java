@@ -10,6 +10,8 @@ import com.yao.bean.LoginInfo;
 import com.yao.sys.dao.AgencyDao;
 import com.yao.sys.dao.SysDao;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,8 +25,9 @@ import java.util.TreeMap;
  */
 @Service
 @Transactional
-@Slf4j
+//@Slf4j
 public class LoginService {
+    private static Log log = LogFactory.getLog(LoginService.class);
 
     @Autowired
     private SysDao sysDao;

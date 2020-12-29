@@ -1,0 +1,19 @@
+常用数据类型映射表
+MySQL	    JDBCType	JavaType	备注
+char	    CHAR	    String	    定长字符
+varchar	    VARCHAR	    String	    变长字符串
+tinyint	    TINYINT 	byte	    1字节
+smallint	SMALLINT	short	    2字节
+int	        INTEGER	    int	        4字节
+float	    FLOAT	    float	    4字节
+bigint	    BIGINT	    long	    8字节
+double	    DOUBLE	    double	    8字节
+bit	        BOOLEAN	    boolean	    布尔类型
+
+日期时间和大对象映射表
+MySQL	    JDBCType	JavaType	            备注
+date	    Date	    util.Date、sql.Date	    YYYY-MM-DD
+time	    TIME	    util.Date、sql.Date	    HH:MM:SS
+timestamp	TIMESTAMP	util.Date、sql.Date	    YYYY-MM-DD HH:MM:SS
+text	    VARCHAR	    String	                文本类型【2^16-1字节】
+longtext	LONGVARCHAR	String	                长文本类型【2^32-1字节】
